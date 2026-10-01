@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCollection, addedtoast } from "../Redux/features/collectionSlice";
 
 const ResultCard = ({ items }) => {
-    const [saved, setSaved] = useState(false);
+
+    const dispatch = useDispatch();
+
+    function addToCollection(items) {
+        dispatch(addCollection(items))
+        dispatch(addedtoast())
+
+    }
 
     return (
         <div className="group relative mt-5 w-full overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
@@ -58,14 +67,13 @@ const ResultCard = ({ items }) => {
 
                 {/* Save Button */}
                 <button
-                    onClick={() => setSaved(!saved)}
-                    className={`absolute bottom-4 right-4 rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-lg transition-all active:scale-95 ${
-                        saved
-                            ? "bg-green-600 hover:bg-green-700"
-                            : "bg-blue-600 hover:bg-blue-700"
-                    }`}
+                    onClick={() => {
+                        addToCollection(items)
+                    }}
+                    className={`absolute bottom-4 right-4 rounded-lg px-4 py-2 text-sm font-semibold text-white shadow-lg transition-all active:scale-95 bg-blue-600 hover:bg-blue-700"
+                        }`}
                 >
-                    {saved ? "✓ Saved" : "Save"}
+                    save
                 </button>
 
             </div>

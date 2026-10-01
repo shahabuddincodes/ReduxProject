@@ -1,1 +1,12 @@
 @import "tailwindcss";
+* {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+:root{
+    --c1:rgb(54, 49, 153);
+    --c2:rgb(45, 116, 149);
+    --c3:rgb(41, 40, 123);
+}
